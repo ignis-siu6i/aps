@@ -66,7 +66,8 @@ int main(void)
 												if (y > x) {
 													continue;
 												}
-												if ((x / y) == input && ((x % y) == 0)) {
+												int q = x / y;
+												if (q == input && (x - y * q == 0)) {
 													cout << a << b << c << d << e << " / " << f << g << h << i << j << " = " << input << endl;
 													++count;
 												}
