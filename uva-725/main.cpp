@@ -83,6 +83,7 @@ int main(void)
 		if (count == 0) {
 			cout << "There are no solutions for " << input << "." << endl;
 		}
+		cout << endl;
 	} while (input != 0);
 
 	return 0;
