@@ -34,18 +34,30 @@ int main(void)
 									continue;
 								}
 								for (int g = 0; g < 10; ++g) {
+									if (g * input / 10 > a) {
+										continue;
+									}
 									if (a == g || b == g || c == g || d == g || e == g || f == g) {
 										continue;
 									}
 									for (int h = 0; h < 10; ++h) {
+										if (h * input / 100 > a) {
+											continue;
+										}
 										if (a == h || b == h || c == h || d == h || e == h || f == h || g == h) {
 											continue;
 										}
 										for (int i = 0; i < 10; ++i) {
+											if (i * input / 1000 > a) {
+												continue;
+											}
 											if (a == i || b == i || c == i || d == i || e == i || f == i || g == i || h == i) {
 												continue;
 											}
 											for (int j = 0; j < 10; ++j) {
+												if (j * input / 10000 > a) {
+													continue;
+												}
 												if (a == j || b == j || c == j || d == j || e == j || f == j || g == j || h == j || i == j) {
 													continue;
 												}
