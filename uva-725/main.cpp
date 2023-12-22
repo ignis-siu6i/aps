@@ -27,6 +27,9 @@ int main(void)
 								continue;
 							}
 							for (int f = 0; f < 10; ++f) {
+								if (f > a) {
+									continue;
+								}
 								if (a == f || b == f || c == f || d == f || e == f) {
 									continue;
 								}
@@ -48,6 +51,9 @@ int main(void)
 												}
 												int x = (a * 10000 + b * 1000 + c * 100 + d * 10 + e);
 												int y = (f * 10000 + g * 1000 + h * 100 + i * 10 + j);
+												if (y > x) {
+													continue;
+												}
 												if ((x / y) == input && ((x % y) == 0)) {
 													cout << a << b << c << d << e << " / " << f << g << h << i << j << " = " << input << endl;
 													++count;
