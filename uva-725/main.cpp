@@ -27,7 +27,7 @@ int main(void)
 								continue;
 							}
 							for (int f = 0; f < 10; ++f) {
-								if (f > a) {
+								if (f * input > a) {
 									continue;
 								}
 								if (a == f || b == f || c == f || d == f || e == f) {
