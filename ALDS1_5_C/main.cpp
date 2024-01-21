@@ -27,13 +27,18 @@ Point getKochSecondPoint(Point kFirstP, Point kThirdP) {
 }
 
 void solve(Point start, Point end, int from, int to) {
-	cout << start.x << " " << start.y << endl;
-
+	if (from == to) {
+		return;
+	}
 	Point firstP = start.getKochFirstPoint(end);
 	Point thirdP = start.getKochThirdPoint(end);
 	Point secondP = getKochSecondPoint(firstP, thirdP);
 
-	cout << end.x << " " << end.y << endl;
+	cout << firstP.x << " " << firstP.y << endl;
+		solve(firstP, secondP, from + 1, to);
+		cout << secondP.x << " " << secondP.y << endl;
+		solve(secondP, thirdP, from + 1, to);
+	cout << thirdP.x << " " << thirdP.y << endl;
 }
 
 int main(void)
@@ -44,10 +49,10 @@ int main(void)
 
 	Point p1 = Point(0, 0);
 	Point p2 = Point(100, 0);
-	Point pFirst = p1.getKochFirstPoint(p2);
-	Point pThird = p1.getKochThirdPoint(p2);
-	Point pSecond = getKochSecondPoint(pFirst, pThird);
-	cout << pFirst.x << ", " << pFirst.y << " " << pSecond.x << ", " << pSecond.y << " " << pThird.x << ", " << pThird.y << endl;
+	
+	cout << p1.x << " " << p1.y << endl;
+	solve(p1, p2, 0, 1);
+	cout << p2.x << " " << p2.y << endl;
 
 	return 0;
 }
