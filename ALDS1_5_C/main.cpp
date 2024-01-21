@@ -51,7 +51,7 @@ int main(void)
 	Point p2 = Point(100, 0);
 	
 	cout << p1.x << " " << p1.y << endl;
-	solve(p1, p2, 0, 1);
+	solve(p1, p2, 0, n);
 	cout << p2.x << " " << p2.y << endl;
 
 	return 0;
