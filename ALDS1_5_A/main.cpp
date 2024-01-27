@@ -4,23 +4,23 @@
 
 using namespace std;
 
-int N;
+int N, M;
 int A[20], Q[200];
 bool solved;
 
-void solve(int m, int currM, int aIdx) {
+void solve(int currM, int aIdx) {
 	if (solved) {
 		return;
 	}
-	if (m == currM) {
+	if (M == currM) {
 		solved = true;
 		return;
 	}
 	if (aIdx >= N) {
 		return;
 	}
-	solve(m, currM + A[aIdx], aIdx + 1);
-	solve(m, currM, aIdx + 1);
+	solve(currM + A[aIdx], aIdx + 1);
+	solve(currM, aIdx + 1);
 }
 
 int main(void)
@@ -36,7 +36,8 @@ int main(void)
 	for (register int i = 0; i < q; ++i) {
 		solved = false;
 		cin >> Q[i];
-		solve(Q[i], 0, 0);
+		M = Q[i];
+		solve(0, 0);
 		if (solved) {
 			cout << "yes" << endl;
 		}
