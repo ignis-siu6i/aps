@@ -4,23 +4,27 @@
 
 using namespace std;
 
-int N, M;
+int N;
 int A[20], Q[200];
-bool solved;
+int memo[20][2000];
 
-void solve(int currM, int aIdx) {
-	if (solved) {
-		return;
+bool solve(int i, int m) {
+	if (memo[i][m] != 0) {
+		cout << "hit!!" << endl;
+		return true;
 	}
-	if (M == currM) {
-		solved = true;
-		return;
+	if (m == 0) {
+		++memo[i][m];
+		return true;
 	}
-	if (aIdx >= N) {
-		return;
+	if (i >= N) {
+		return false;
 	}
-	solve(currM + A[aIdx], aIdx + 1);
-	solve(currM, aIdx + 1);
+	bool res = solve(i + 1, m) || solve(i + 1, m - A[i]);
+	if (res) {
+		++memo[i][m];
+	}
+	return res;
 }
 
 int main(void)
@@ -34,11 +38,14 @@ int main(void)
 	int q;
 	cin >> q;
 	for (register int i = 0; i < q; ++i) {
-		solved = false;
-		cin >> Q[i];
-		M = Q[i];
-		solve(0, 0);
-		if (solved) {
+		for (register int i = 0; i < 20; ++i) {
+			for (register int j = 0; j < 2000; ++j) {
+				memo[i][j] = 0;
+			}
+		}
+		int m;
+		cin >> m;
+		if (solve(0, m)) {
 			cout << "yes" << endl;
 		}
 		else {
