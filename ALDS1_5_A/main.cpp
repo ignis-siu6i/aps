@@ -4,10 +4,11 @@
 
 using namespace std;
 
+int N;
 int A[20], Q[200];
 bool solved;
 
-void solve(int n, int m, int currM, int aIdx) {
+void solve(int m, int currM, int aIdx) {
 	if (solved) {
 		return;
 	}
@@ -15,20 +16,19 @@ void solve(int n, int m, int currM, int aIdx) {
 		solved = true;
 		return;
 	}
-	if (aIdx >= n) {
+	if (aIdx >= N) {
 		return;
 	}
-	solve(n, m, currM + A[aIdx], aIdx + 1);
-	solve(n, m, currM, aIdx + 1);
+	solve(m, currM + A[aIdx], aIdx + 1);
+	solve(m, currM, aIdx + 1);
 }
 
 int main(void)
 {
 	freopen("input.txt", "r", stdin);
 
-	int n;
-	cin >> n;
-	for (register int i = 0; i < n; ++i) {
+	cin >> N;
+	for (register int i = 0; i < N; ++i) {
 		cin >> A[i];
 	}
 	int q;
@@ -36,7 +36,7 @@ int main(void)
 	for (register int i = 0; i < q; ++i) {
 		solved = false;
 		cin >> Q[i];
-		solve(n, Q[i], 0, 0);
+		solve(Q[i], 0, 0);
 		if (solved) {
 			cout << "yes" << endl;
 		}
