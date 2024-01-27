@@ -10,7 +10,6 @@ int memo[20][2000];
 
 bool solve(int i, int m) {
 	if (memo[i][m] != 0) {
-		cout << "hit!!" << endl;
 		return true;
 	}
 	if (m == 0) {
@@ -29,8 +28,6 @@ bool solve(int i, int m) {
 
 int main(void)
 {
-	freopen("input.txt", "r", stdin);
-
 	cin >> N;
 	for (register int i = 0; i < N; ++i) {
 		cin >> A[i];
@@ -38,9 +35,9 @@ int main(void)
 	int q;
 	cin >> q;
 	for (register int i = 0; i < q; ++i) {
-		for (register int i = 0; i < 20; ++i) {
-			for (register int j = 0; j < 2000; ++j) {
-				memo[i][j] = 0;
+		for (register int j = 0; j < 20; ++j) {
+			for (register int k = 0; k < 2000; ++k) {
+				memo[j][k] = 0;
 			}
 		}
 		int m;
