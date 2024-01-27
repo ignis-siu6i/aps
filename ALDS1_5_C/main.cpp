@@ -12,11 +12,11 @@ struct Point {
 		y = _y;
 	}
 	Point getKochFirstPoint(Point p2) {
-		return Point((x + p2.x) / 3, (y + p2.y) / 3);
+		return Point((2 * x + p2.x) / 3, (2 * y + p2.y) / 3);
 	}
 
 	Point getKochThirdPoint(Point p2) {
-		return Point((x + p2.x) / 3 * 2, (y + p2.y) / 3 * 2);
+		return Point((x + 2 * p2.x) / 3, (y + 2 * p2.y) / 3);
 	}
 };
 
@@ -27,7 +27,6 @@ Point getKochSecondPoint(Point kFirstP, Point kThirdP) {
 }
 
 void solve(Point start, Point end, int from, int to) {
-	cout << "solve( (" << start.x << "," << start.y << "), (" << end.x << ", " << end.y << "), " << from << ", " << to << ")" << endl;
 	if (from == to) {
 		return;
 	}
