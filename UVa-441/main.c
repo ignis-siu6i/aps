@@ -1,6 +1,6 @@
-#include <iostream>
+#define _CRT_SECURE_NO_WARNINGS
 
-using namespace std;
+#include <stdio.h>
 
 #define NOT_SELECTED (0)
 #define SELECTED (1)
@@ -8,43 +8,40 @@ using namespace std;
 int k = -1;
 int A[13];
 int selected[13];
+int isFirstAnswer = 1;
 
-bool allSelected() {
-    // cout << "allSelected()" << endl;
+int allSelected() {
     int count = 0;
     for (register int i = 0; i < 13; ++i) {
         if (selected[i]) {
             ++count;
         }
     }
-    // cout << (count == 6) << endl;
     return count == 6;
 }
 
 void solve(int i) {
-    // cout << "solve(" << i << ")" << endl;
-    // for (register int i = 0; i < 13; ++i) {
-    //     if (selected[i]) {
-    //         cout << "_" << A[i];
-    //     }
-    // }
-    // cout << endl;
     if (i > k) {
         return;
     }
     if (allSelected()) {
-        bool isFirstItem = true;
+        int isFirstItem = 1;
+		if (isFirstAnswer) {
+			isFirstAnswer = 0;
+		}
+		else {
+			printf("\n");
+		}
         for (register int i = 0; i < k; ++i) {
             if (selected[i]) {
                 if (!isFirstItem) {
-                    cout << " ";
+					printf(" ");
                 } else {
-                    isFirstItem = false;
+                    isFirstItem = 0;
                 }
-                cout << A[i];
+				printf("%d", A[i]);
             }
         }
-        cout << endl;
         return;
     }
     if (!allSelected()) {
@@ -58,16 +55,16 @@ void solve(int i) {
 int main(void)
 {
     do {
-        cin >> k;
+		scanf("%d", &k);
         for (register int i = 0; i < k; ++i) {
-            cin >> A[i];
+			scanf("%d", &A[i]);
         }
         for (register int i = 0; i < k; ++i) {
             selected[i] = NOT_SELECTED;
         }
-        solve(0);
         if (k != 0) {
-            cout << endl;
+			solve(0);
+			printf("\n");
         }
     } while (k != 0);
 
