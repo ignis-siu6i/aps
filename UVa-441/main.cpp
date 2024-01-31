@@ -10,25 +10,16 @@ int A[13];
 int selected[13];
 
 bool allSelected() {
-    // cout << "allSelected()" << endl;
     int count = 0;
     for (register int i = 0; i < 13; ++i) {
         if (selected[i]) {
             ++count;
         }
     }
-    // cout << (count == 6) << endl;
     return count == 6;
 }
 
 void solve(int i) {
-    // cout << "solve(" << i << ")" << endl;
-    // for (register int i = 0; i < 13; ++i) {
-    //     if (selected[i]) {
-    //         cout << "_" << A[i];
-    //     }
-    // }
-    // cout << endl;
     if (i > k) {
         return;
     }
@@ -65,8 +56,8 @@ int main(void)
         for (register int i = 0; i < k; ++i) {
             selected[i] = NOT_SELECTED;
         }
-        solve(0);
         if (k != 0) {
+			solve(0);
             cout << endl;
         }
     } while (k != 0);

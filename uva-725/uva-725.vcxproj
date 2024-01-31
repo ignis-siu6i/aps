@@ -13,6 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F32DB3CA-247E-486C-9E46-D0D63446B6C6}</ProjectGuid>
     <RootNamespace>uva725</RootNamespace>
+    <ProjectName>UVa-725</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
