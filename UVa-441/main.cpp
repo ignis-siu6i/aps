@@ -21,6 +21,9 @@ bool allSelected() {
 }
 
 void solve(int i) {
+    if (i >= k) {
+        return;
+    }
     if (allSelected()) {
         bool isFirstItem = true;
         for (register int i = 0; i < k; ++i) {
@@ -34,10 +37,11 @@ void solve(int i) {
             }
         }
         cout << endl;
+        return;
     }
-    A[i] = NOT_SET;
+    selected[i] = NOT_SET;
     solve(i + 1);
-    A[i] = SET;
+    selected[i] = SET;
     solve(i + 1);
 }
 
