@@ -66,7 +66,9 @@ int main(void)
             selected[i] = NOT_SELECTED;
         }
         solve(0);
-        cout << endl;
+        if (k != 0) {
+            cout << endl;
+        }
     } while (k != 0);
 
     return 0;
