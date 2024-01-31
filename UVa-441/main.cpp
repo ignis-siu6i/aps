@@ -2,26 +2,34 @@
 
 using namespace std;
 
-#define NOT_SET_YET (-1)
-#define SET 1
-#define NOT_SET 0
+#define NOT_SELECTED (0)
+#define SELECTED (1)
 
 int k = -1;
 int A[13];
 int selected[13];
 
 bool allSelected() {
+    // cout << "allSelected()" << endl;
     int count = 0;
     for (register int i = 0; i < 13; ++i) {
         if (selected[i]) {
             ++count;
         }
     }
-    return count == k;
+    // cout << (count == 6) << endl;
+    return count == 6;
 }
 
 void solve(int i) {
-    if (i >= k) {
+    // cout << "solve(" << i << ")" << endl;
+    // for (register int i = 0; i < 13; ++i) {
+    //     if (selected[i]) {
+    //         cout << "_" << A[i];
+    //     }
+    // }
+    // cout << endl;
+    if (i > k) {
         return;
     }
     if (allSelected()) {
@@ -39,9 +47,11 @@ void solve(int i) {
         cout << endl;
         return;
     }
-    selected[i] = NOT_SET;
-    solve(i + 1);
-    selected[i] = SET;
+    if (!allSelected()) {
+        selected[i] = SELECTED;
+        solve(i + 1);
+    }
+    selected[i] = NOT_SELECTED;
     solve(i + 1);
 }
 
@@ -53,9 +63,10 @@ int main(void)
             cin >> A[i];
         }
         for (register int i = 0; i < k; ++i) {
-            selected[k] = NOT_SET_YET;
+            selected[i] = NOT_SELECTED;
         }
         solve(0);
+        cout << endl;
     } while (k != 0);
 
     return 0;
