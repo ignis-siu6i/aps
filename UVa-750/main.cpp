@@ -3,20 +3,54 @@
 using namespace std;
 
 int board[8];
+bool pin[8];
+
+void print_board(int board[8][8]) {
+	for (register int i = 0; i < 8; ++i) {
+		for (register int j = 0; j < 8; ++j) {
+			cout << board[i][j] << " ";
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
 
 void check(int a, int b, int c, int d, int e, int f, int g, int h) {
-
+	int in_check[8] = { a, b, c, d, e, f, g, h };
+	for (register int i = 0; i < 8; ++i) {
+		if (pin[i]) {
+			if (board[i] != in_check[i]) {
+				return;
+			}
+		}
+	}
+	int real_board[8][8];
+	for (register int i = 0; i < 8; ++i) {
+		for (register int j = 0; j < 8; ++j) {
+			if (in_check[i] == j) {
+				real_board[i][j] = 1;
+			}
+			else {
+				real_board[i][j] = 0;
+			}
+		}
+	}
+	print_board(real_board);
 }
 
 int main(void)
 {
 	int N;
 	cin >> N;
-
+	for (register int i = 0; i < 8; ++i) {
+		board[8] = -1;
+		pin[8] = false;
+	}
 	for (register int n = 0; n < N; ++n) {
 		int i, j;
 		cin >> i >> j;
 		board[i - 1] = j - 1;
+		pin[i - 1] = true;
 	}
 
 	for (register int a = 0; a < 8; ++a) {
