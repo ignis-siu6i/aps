@@ -3,95 +3,45 @@
 using namespace std;
 
 int board[8];
-int num[8];
-bool row_pin[8];
-bool num_pin[8];
 
-void print_board() {
-	for (register int i = 0; i < 8; ++i) {
-		cout << board[i] << " ";
-	}
-	cout << endl;
-}
+void check(int a, int b, int c, int d, int e, int f, int g, int h) {
 
-void print_board_pretty() {
-	for (register int i = 0; i < 8; ++i) {
-		for (register int j = 0; j < 8; ++j) {
-			if (board[i] == j) {
-				cout << "1 ";
-			}
-			else {
-				cout << "0 ";
-			}
-		}
-		cout << endl;
-	}
-	cout << endl;
-}
-
-int get_next_blank_row() {
-	for (register int i = 0; i < 8; ++i) {
-		if (row_pin[i]) {
-			continue;
-		}
-		if (board[i] == -1) {
-			return i;
-		}
-	}
-	return -1;
-}
-
-int get_next_unused_num() {
-	for (register int i = 0; i < 8; ++i) {
-		if (num_pin[i]) {
-			continue;
-		}
-		if (num[i] == -1) {
-			return i;
-		}
-	}
-	return -1;
-}
-
-void solve() {
-	print_board();
-	for (register int i = 0; i < 8; ++i) {
-		if (board[i] != -1) {
-			continue;
-		}
-		for (register int j = 0; j < 8; ++j) {
-			if (num[j] != -1) {
-				continue;
-			}
-			board[i] = j;
-			num[j] = i;
-			solve();
-			board[i] = -1;
-			num[j] = -1;
-		}
-	}
 }
 
 int main(void)
 {
 	int N;
 	cin >> N;
-	for (register int i = 0; i < 8; ++i) {
-		board[i] = -1;
-		num[i] = -1;
-		row_pin[i] = false;
-		num_pin[i] = false;
-	}
+
 	for (register int n = 0; n < N; ++n) {
 		int i, j;
 		cin >> i >> j;
 		board[i - 1] = j - 1;
-		num[j - 1] = i - 1;
-		row_pin[i - 1] = true;
-		num_pin[j - 1] = true;
 	}
 
-	solve();
-
+	for (register int a = 0; a < 8; ++a) {
+		for (register int b = 0; b < 8; ++b) {
+			if (b == a) continue;
+			for (register int c = 0; c < 8; ++c) {
+				if (c == a || c == b) continue;
+				for (register int d = 0; d < 8; ++d) {
+					if (d == a || d == b || d == c) continue;
+					for (register int e = 0; e < 8; ++e) {
+						if (e == a || e == b || e == c || e == d) continue;
+						for (register int f = 0; f < 8; ++f) {
+							if (f == a || f == b || f == c || f == d || f == e) continue;
+							for (register int g = 0; g < 8; ++g) {
+								if (g == a || g == b || g == c || g == d || g == e || g == f) continue;
+								for (register int h = 0; h < 8; ++h) {
+									if (h == a || h == b || h == c || h == d || h == e || h == f || h == g) continue;
+									check(a, b, c, d, e, f, g, h);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	return 0;
 }
