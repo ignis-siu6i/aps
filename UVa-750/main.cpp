@@ -67,7 +67,13 @@ int main(void)
 	for (register int i = 0; i < 8; ++i) {
 		queen[i] = NOT_SET;
 	}
-	//queen[0] = 0;
+	int N;
+	cin >> N;
+	for (register int n = 0; n < N; ++n) {
+		int i, j;
+		cin >> i >> j;
+		queen[i - 1] = j - 1;
+	}
 
 	solve(0);
 
