@@ -68,7 +68,7 @@ void solve(int i) {
 
 int main(void)
 {
-	freopen("input.txt", "r", stdin);
+	//freopen("input.txt", "r", stdin);
 	int N;
 	cin >> N;
 	for (register int n = 0; n < N; ++n) {
@@ -78,11 +78,12 @@ int main(void)
 		}
 		int i, j;
 		cin >> i >> j;
-		queen[i - 1] = j - 1;
+		queen[j - 1] = i - 1;
 
 		cout << "SOLN       COLUMN" << endl;
 		cout << " #      1 2 3 4 5 6 7 8" << endl << endl;
 		solve(0);
+		cout << endl;
 	}
 
 	return 0;
