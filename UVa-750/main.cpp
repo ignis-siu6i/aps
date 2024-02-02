@@ -47,7 +47,12 @@ inline bool available(int i, int j) {
 
 void solve(int i) {
 	if (i > 7) {
-		cout << " " << ++cnt << "      ";
+		if (cnt + 1 < 10) {
+			cout << " " << ++cnt << "      ";
+		}
+		else {
+			cout << ++cnt << "      ";
+		}
 		print();
 		return;
 	}
@@ -83,7 +88,9 @@ int main(void)
 		cout << "SOLN       COLUMN" << endl;
 		cout << " #      1 2 3 4 5 6 7 8" << endl << endl;
 		solve(0);
-		cout << endl;
+		if (n != N - 1) {
+			cout << endl;
+		}
 	}
 
 	return 0;
