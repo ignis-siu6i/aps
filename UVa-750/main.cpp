@@ -5,6 +5,7 @@ using namespace std;
 #define NOT_SET (-1)
 
 int queen[8];
+int cnt = 0;
 
 inline bool queenExistsInRow(int row) {
 	return queen[row] != NOT_SET;
@@ -44,6 +45,7 @@ inline bool available(int i, int j) {
 
 void solve(int i) {
 	if (i > 7) {
+		cout << " " << ++cnt << "      ";
 		print();
 		return;
 	}
@@ -75,6 +77,8 @@ int main(void)
 		queen[i - 1] = j - 1;
 	}
 
+	cout << "SOLN       COLUMN" << endl;
+	cout << " #      1 2 3 4 5 6 7 8" << endl << endl;
 	solve(0);
 
 	return 0;
